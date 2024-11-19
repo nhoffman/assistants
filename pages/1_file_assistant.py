@@ -3,6 +3,7 @@ from openai import OpenAI, OpenAIError
 import streamlit as st
 
 from chat import asst_stream_response, ASSISTANTS
+from utils import check_password
 
 
 def clear_thread():
@@ -13,13 +14,16 @@ def clear_thread():
             ASSISTANTS[assistant_id].get('instructions', '').split())
 
 
-st.header('Use an assistant with file search')
+if not check_password():
+    st.stop()
 
 try:
     st.session_state["client"] = OpenAI()
 except OpenAIError as e:
     st.error('Make sure environment variables OPENAI_API_KEY, OPENAI_BASE_URL are set')
-    st.stop(e)
+    st.stop()
+
+st.header('Use an assistant with file search')
 
 st.selectbox(
     label='Assistant',

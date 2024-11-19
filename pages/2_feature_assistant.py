@@ -6,6 +6,7 @@ from openai import OpenAI, OpenAIError
 import streamlit as st
 
 import chat
+from utils import check_password
 
 st.set_page_config(layout="wide")
 
@@ -40,11 +41,14 @@ def submit_query():
             st.error(e)
 
 
+if not check_password():
+    st.stop()
+
 try:
     st.session_state["client"] = OpenAI()
 except OpenAIError as e:
     st.error('Make sure environment variables OPENAI_API_KEY, OPENAI_BASE_URL are set')
-    st.stop(e)
+    st.stop()
 
 st.header('Feature extraction using OpenAI function calling')
 
