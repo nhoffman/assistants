@@ -1,9 +1,7 @@
-from openai import OpenAI, OpenAIError
-
 import streamlit as st
 
-from chat import asst_stream_response, ASSISTANTS
-from utils import check_password
+from chat import asst_stream_response
+from utils import check_password, get_client, get_assistants
 
 
 def clear_thread():
@@ -17,11 +15,8 @@ def clear_thread():
 if not check_password():
     st.stop()
 
-try:
-    st.session_state["client"] = OpenAI()
-except OpenAIError as e:
-    st.error('Make sure environment variables OPENAI_API_KEY, OPENAI_BASE_URL are set')
-    st.stop()
+st.session_state["client"] = get_client()
+ASSISTANTS = get_assistants('assistants.yml')
 
 st.header('Use an assistant with file search')
 
@@ -39,9 +34,9 @@ st.selectbox(
 if assistant_id := st.session_state.get("assistant_id"):
     st.html(ASSISTANTS[assistant_id]['description'])
     st.text_area(
-        "Instructions",
+        "System Prompt",
         key="instructions",
-        help="Provide any specific instructions for the assistant.")
+        help="Provide any specific instructions for the assistant that will apply to all queries.")
 
 st.session_state["thread"] = st.session_state.get(
     "thread",
