@@ -1,4 +1,4 @@
-# DLMP Assistants
+# API Assistants
 
 Tools for interacting with Generative AI
 
