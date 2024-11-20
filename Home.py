@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="DLMP Assistants",
+    page_title="API Assistants",
 )
 
 with open('Home.md', encoding='utf-8') as f:
