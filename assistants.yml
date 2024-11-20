@@ -1,13 +1,6 @@
 ---
 
 ASSISTANTS:
-  asst_xoY5kRvnY3ApUqMNKHuagMhs:
-    active: false
-    name: 2024 CAP Checklists
-    description: |
-      Contains the entire contents of the custom checklists for the 2024 self-inspection.
-    instructions: Always include the relevant checklist item numbers and titles in the response.
-
   asst_MUA3BjHRpz0yz7LdGLXFNtj3:
     active: true
     name: FDA Guidance on Lab Developed Tests
@@ -18,6 +11,18 @@ ASSISTANTS:
     vars:
       ldt_rule: "https://www.federalregister.gov/documents/2024/05/06/2024-08935/medical-devices-laboratory-developed-tests"
       fda_announcement: "https://www.fda.gov/news-events/press-announcements/fda-takes-action-aimed-helping-ensure-safety-and-effectiveness-laboratory-developed-tests"
+
+  asst_YYIku0CEiWgMejYoxt2rnf0W:
+    active: true
+    name: Jim Harrison's Intro To Path Informatics Course
+    description: |
+      Slides and term lists from Dr. James Harrison's CC-BY licensed
+      Introduction to Pathology Informatics course available for
+      download <a href="{url}">here</a>.
+    instructions: You are an expert in pathology informatics.
+    vars:
+      url: "https://apai.memberclicks.net/teaching-slide-sets"
+
 
   asst_BLkdkxwulAC4b5gu1UTrF5Sa:
     active: false
