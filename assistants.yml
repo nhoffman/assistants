@@ -19,7 +19,9 @@ ASSISTANTS:
       Slides and term lists from Dr. James Harrison's CC-BY licensed
       Introduction to Pathology Informatics course available for
       download <a href="{url}">here</a>.
-    instructions: You are an expert in pathology informatics.
+    instructions: |
+      You are an expert in pathology informatics. Always indicate
+      which lecture content originates from.
     vars:
       url: "https://apai.memberclicks.net/teaching-slide-sets"
 
